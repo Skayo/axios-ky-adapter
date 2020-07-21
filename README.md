@@ -57,3 +57,16 @@ axios.get('https://example.com', {
      console.log(error);
 })
 ```
+
+## Browser / Node.js support
+
+This adapter uses `ky-universal` so it should work in the browser and in Node.js.  
+For more information check the [ky](https://github.com/sindresorhus/ky) and [ky-universal](https://github.com/sindresorhus/ky-universal) docs!
+
+## Related
+
+- [axios](https://github.com/axios/axios)
+- [ky](https://github.com/sindresorhus/ky)
+- [ky-universal](https://github.com/sindresorhus/ky-universal)
+
+## [License](https://github.com/Skayo/axios-ky-adapter/blob/master/LICENSE.md)
