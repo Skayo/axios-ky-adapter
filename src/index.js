@@ -4,13 +4,12 @@ var settle = require('axios/lib/core/settle');
 var buildFullPath = require('axios/lib/core/buildFullPath');
 var createError = require('axios/lib/core/createError');
 var buildURL = require('axios/lib/helpers/buildURL');
-var parseHeaders = require('axios/lib/helpers/parseHeaders');
 var isURLSameOrigin = require('axios/lib/helpers/isURLSameOrigin');
 var cookies = require('axios/lib/helpers/cookies');
 var utils = require('axios/lib/utils');
 var ky = require('ky-universal');
 
-function kyAdapter(config) {
+module.exports = function kyAdapter(config) {
 	// At this point:
 	//  - config has been merged with defaults
 	//  - request transformers have already run
@@ -173,7 +172,9 @@ function kyAdapter(config) {
 						break;
 				}
 
-				var response = await ky(requestUrl, Object.assign(options, kyAdapter.kyOptions));
+				if (kyAdapter.kyOptions) options = Object.assign(options, kyAdapter.kyOptions);
+
+				var response = await ky(requestUrl, options);
 				var responseData = await response[bodyMethod]();
 
 				if (bodyMethodAfter) responseData = bodyMethodAfter(responseData);
@@ -188,8 +189,4 @@ function kyAdapter(config) {
 			}
 		})();
 	});
-}
-
-kyAdapter.kyOptions = {};
-
-module.exports = kyAdapter;
+};
