@@ -2,6 +2,7 @@
 
 > An Axios adapter for Ky, a tiny and elegant HTTP client based on the browser Fetch API
 
+![npm version](https://img.shields.io/npm/v/axios-ky-adapter?style=for-the-badge)
 ![npm downloads](https://img.shields.io/npm/dt/axios-ky-adapter?style=for-the-badge)
 ![dependencies](https://img.shields.io/david/Skayo/axios-ky-adapter?style=for-the-badge)
 
