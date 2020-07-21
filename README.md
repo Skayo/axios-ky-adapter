@@ -65,8 +65,8 @@ For more information check the [ky](https://github.com/sindresorhus/ky) and [ky-
 
 ## Related
 
-- [axios](https://github.com/axios/axios)
-- [ky](https://github.com/sindresorhus/ky)
-- [ky-universal](https://github.com/sindresorhus/ky-universal)
+- [axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
+- [ky](https://github.com/sindresorhus/ky) - Tiny and elegant HTTP client based on the browser Fetch API
+- [ky-universal](https://github.com/sindresorhus/ky-universal) - Use Ky in both Node.js and browsers
 
 ## [License](https://github.com/Skayo/axios-ky-adapter/blob/master/LICENSE.md)
