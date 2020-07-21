@@ -50,6 +50,7 @@ module.exports = function kyAdapter(config) {
 			method:  config.method.toLowerCase(),
 			timeout: config.timeout || false, // Set the request timeout in MS
 		};
+		var kyOptions = config.kyOptions || {};
 
 		function handleLoad(response, responseData) {
 			settle(resolve, reject, {
@@ -173,7 +174,7 @@ module.exports = function kyAdapter(config) {
 						break;
 				}
 
-				var response = await ky(requestUrl, options);
+				var response = await ky(requestUrl, Object.assign(options, options.kyOptions));
 				var responseData = await response[bodyMethod]();
 
 				if (bodyMethodAfter) responseData = bodyMethodAfter(responseData);
