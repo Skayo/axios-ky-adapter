@@ -42,12 +42,13 @@ const axios = require('axios');
 const kyAdapter = require('axios-ky-adapter');
 const fetch = require('isomorphic-unfetch');
 
+kyAdapter.kyOptions = {
+    mode: 'cors', // set CORS mode (fetch option)
+    fetch, // pass custom fetch implementation (ky option)
+};
+
 axios.get('https://example.com', {
-    adapter: kyAdapter,
-    kyOptions: {
-        mode: 'cors', // set CORS mode (fetch option)
-        fetch, // pass custom fetch implementation (ky option)
-    }
+    adapter: kyAdapter
 }).then(function (response) {
      // handle success
      console.log(response);

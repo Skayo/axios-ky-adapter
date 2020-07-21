@@ -10,7 +10,7 @@ var cookies = require('axios/lib/helpers/cookies');
 var utils = require('axios/lib/utils');
 var ky = require('ky-universal');
 
-module.exports = function kyAdapter(config) {
+function kyAdapter(config) {
 	// At this point:
 	//  - config has been merged with defaults
 	//  - request transformers have already run
@@ -50,7 +50,6 @@ module.exports = function kyAdapter(config) {
 			method:  config.method.toLowerCase(),
 			timeout: config.timeout || false, // Set the request timeout in MS
 		};
-		var kyOptions = config.kyOptions || {};
 
 		function handleLoad(response, responseData) {
 			settle(resolve, reject, {
@@ -172,7 +171,7 @@ module.exports = function kyAdapter(config) {
 						break;
 				}
 
-				var response = await ky(requestUrl, Object.assign(options, kyOptions));
+				var response = await ky(requestUrl, Object.assign(options, kyAdapter.kyOptions));
 				var responseData = await response[bodyMethod]();
 
 				if (bodyMethodAfter) responseData = bodyMethodAfter(responseData);
@@ -187,4 +186,8 @@ module.exports = function kyAdapter(config) {
 			}
 		})();
 	});
-};
+}
+
+kyAdapter.kyOptions = {};
+
+module.exports = kyAdapter;
