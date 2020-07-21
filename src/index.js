@@ -148,6 +148,8 @@ function kyAdapter(config) {
 			requestData = null;
 		}
 
+		options.body = requestData;
+
 		(async function() {
 			try {
 				var bodyMethod = 'json';
