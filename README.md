@@ -30,8 +30,7 @@ axios.get('https://example.com', {
 }).then(function (response) {
      // handle success
      console.log(response);
-})
-.catch(function (error) {
+}).catch(function (error) {
      // handle error
      console.log(error);
 })
@@ -52,8 +51,7 @@ axios.get('https://example.com', {
 }).then(function (response) {
      // handle success
      console.log(response);
-})
-.catch(function (error) {
+}).catch(function (error) {
      // handle error
      console.log(error);
 })
