@@ -71,9 +71,7 @@ module.exports = function kyAdapter(config) {
 		}
 
 		function handleError(error) {
-			// Real errors are hidden from us by the browser
-			// onerror should only fire if it's a network error
-			reject(createError('Network Error', config, null, request));
+			reject(createError(error.message, config, null, request));
 
 			// Clean up request
 			request = null;
@@ -174,7 +172,7 @@ module.exports = function kyAdapter(config) {
 						break;
 				}
 
-				var response = await ky(requestUrl, Object.assign(options, options.kyOptions));
+				var response = await ky(requestUrl, Object.assign(options, kyOptions));
 				var responseData = await response[bodyMethod]();
 
 				if (bodyMethodAfter) responseData = bodyMethodAfter(responseData);
